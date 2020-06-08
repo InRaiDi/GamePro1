@@ -11047,7 +11047,7 @@ GameObject:
   - component: {fileID: 876220538}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11066,6 +11066,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rb: {fileID: 876220539}
+  animator: {fileID: 876220542}
+  facingRight: 1
 --- !u!50 &876220539
 Rigidbody2D:
   serializedVersion: 4
