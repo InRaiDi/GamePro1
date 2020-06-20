@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,12 +10,17 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public bool facingRight = true;
 
+    public Camera cam;
+
     Vector2 movement;
+    Vector2 mousePos;
 
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
@@ -25,24 +31,15 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
-        if (Input.GetAxis("Horizontal") < 0.0 && facingRight) //I'll do this better later.
-        {
-            Flip();
-        }
-        else if (Input.GetAxis("Horizontal") > 0.0 && !facingRight)
-        {
-            Flip();
-        }
+        Vector2 lookdDir = mousePos - rb.position; //subtracting vectors gives us a vector that points one to the other
+
+        float angle = Mathf.Atan2(lookdDir.y, lookdDir.x) * Mathf.Rad2Deg; //- 90f; //funciton tahat returns the angle between X and the mouse direction vector (x,y)
+        rb.rotation = angle;
+
+
 
     }
 
-    private void Flip()
-    {
-        facingRight = !facingRight;      
-        
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;                
-        transform.localScale = theScale;
-    }
+
 }
 
