@@ -6,55 +6,71 @@ public class Attack : MonoBehaviour
 {
     public Animator animator;
     public bool fireArmEquipped = false;
-   
+
     public bool knifeEquipped = false;
     public int numberBullets = 0;
 
 
     public Transform attackPoint;
     public GameObject bulletPrefab;
-    
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
 
-    public float bulletForce = 20f;
+    public float attackForce = 5f;
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetButton("Fire1"))
         {
-            Attack();
-        }
-        
-        void Attack()
-        {
-            
 
-            if (fireArmEquipped) 
+            if (fireArmEquipped)
             {
-                GameObject bullet = Instantiate(bulletPrefab, attackPoint.position, attackPoint.rotation);
-                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-                rb.AddForce(attackPoint.right * bulletForce, ForceMode2D.Impulse);
+                fireArmAttack();
             }
             else
             {
-                if (knifeEquipped)
-                {
-                    animator.SetBool("KnifeEquipped", true);
-                    knife();
-                }
-                else
-                {
-                    punch();
-                }
+                MeleeAttack();
             }
         }
-        void knife()
+
+
+        void MeleeAttack()
         {
-            animator.SetTrigger("KnifeAttack");
+            if (knifeEquipped)
+            {
+                animator.SetBool("KnifeEquipped", true);
+                attackForce = 10f; 
+                knife();
+            }
+            else
+            {
+                attackForce = 5f;
+                punch();
+            }
+
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+            foreach (Collider2D enemy in hitEnemies)
+
+            {
+                Debug.Log("You hit " + enemy.name);
+            }
         }
-        void punch()
-        {
-            animator.SetTrigger("Attack");
-        }
+    }
+    void knife()
+    {
+        animator.SetTrigger("KnifeAttack");
+        
+    }
+    void punch()
+    {
+        animator.SetTrigger("Attack");
+    }
+    void fireArmAttack()
+    {
+
+        GameObject bullet = Instantiate(bulletPrefab, attackPoint.position, attackPoint.rotation);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(attackPoint.right * attackForce, ForceMode2D.Impulse);
     }
 }
