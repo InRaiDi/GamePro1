@@ -8,8 +8,6 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Animator animator;
-    public bool facingRight = true;
-
     public Camera cam;
 
     Vector2 movement;
