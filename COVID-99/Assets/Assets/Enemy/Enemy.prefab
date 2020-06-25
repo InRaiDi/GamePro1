@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4219926851674829367}
   - component: {fileID: 285808154827083909}
-  - component: {fileID: 2144563953907591240}
   - component: {fileID: 442274107626047820}
   - component: {fileID: 2561931777397679601}
   - component: {fileID: 2738773218250920734}
+  - component: {fileID: 8460584877558164506}
+  - component: {fileID: 5881015179421418339}
   m_Layer: 8
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,21 +55,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2144563953907591240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4257743786417682412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11901c2b9122fca47b49b34dcd2926f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  hitEffect: {fileID: 3607660826627384300, guid: 890b55eca798c514aa38df57881105c6,
-    type: 3}
 --- !u!61 &442274107626047820
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -166,3 +152,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8460584877558164506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4257743786417682412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11901c2b9122fca47b49b34dcd2926f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  hitEffect: {fileID: 8908658963711248317, guid: 600a728f76c56634f991312c390db646,
+    type: 3}
+--- !u!114 &5881015179421418339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4257743786417682412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7cc670b32a7aaf4ba5b83a5bcaf88a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  speed: 2
+  toggleSpeedchange: 1
