@@ -21,10 +21,15 @@ public class bullet : MonoBehaviour
         Enemy enemy = hitInfo.GetComponent<Enemy>();
         if (enemy != null)
         {
-            enemy.TakeDamage(Random.Range(40, 80));
+            enemy.TakeDamage(Random.Range(40, 60));
+            Destroy(gameObject);
 
         }
 
-        Destroy(gameObject);
     }
+    private void Update()
+    {
+        Destroy(gameObject, 2.0f);
+    }
+
 }
