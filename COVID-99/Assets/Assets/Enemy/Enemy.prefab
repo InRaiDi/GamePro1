@@ -167,6 +167,8 @@ MonoBehaviour:
   health: 100
   hitEffect: {fileID: 8908658963711248317, guid: 600a728f76c56634f991312c390db646,
     type: 3}
+  bloodDrop: {fileID: 7060574509777243791, guid: d7889dd1dcbafb74a92e5fccca76fbd5,
+    type: 3}
 --- !u!114 &5881015179421418339
 MonoBehaviour:
   m_ObjectHideFlags: 0

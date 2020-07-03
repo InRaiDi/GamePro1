@@ -68,8 +68,10 @@
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
-    <Compile Include="Assets\Scripts\Equipment.cs" />
+    <Compile Include="Assets\Scripts\Inventory.cs" />
+    <Compile Include="Assets\Scripts\PickUp.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\WeaponSwitching.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Felipe/Documents/Felipe/Game/COMP305-Game Programming 01/Project01/GamePro1/COVID-99/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

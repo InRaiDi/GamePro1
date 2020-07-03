@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Currency
+  - Ammo
+  - Pistol
   layers:
   - Default
   - TransparentFX

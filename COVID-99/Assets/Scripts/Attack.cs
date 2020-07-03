@@ -5,15 +5,13 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     public Animator animator;
-    public bool fireArmEquipped = false;
+    public bool fireArmEquipped;
 
-    public bool knifeEquipped = false;
-    public int numberBullets = 0;
-
+    public bool knifeEquipped;
+    public int numberBullets;
 
     public Transform attackPoint;
     public GameObject bulletPrefab;
-    
 
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
@@ -25,12 +23,17 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+
         if (Input.GetButtonDown("Fire1"))
         {
 
+
             if (fireArmEquipped)
             {
+               
                 FireArmAttack();
+                
                 
             }
             else
@@ -44,7 +47,6 @@ public class Attack : MonoBehaviour
         {
             if (knifeEquipped)
             {
-
                 animator.SetBool("KnifeEquipped", true);
                 attackForce = Random.Range(30, 40);
                 Knife();
@@ -75,13 +77,28 @@ public class Attack : MonoBehaviour
     {
         animator.SetTrigger("Attack");
     }
+
     void FireArmAttack()
     {
+        if (numberBullets > 0)
+        {
+            animator.SetTrigger("Shoot");
+            numberBullets--;
+            GameObject bullet = Instantiate(bulletPrefab, attackPoint.position, attackPoint.rotation);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(attackPoint.right * attackForce, ForceMode2D.Impulse);
+            //shooting sound
 
-        GameObject bullet = Instantiate(bulletPrefab, attackPoint.position, attackPoint.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(attackPoint.right * attackForce, ForceMode2D.Impulse);
+        }
+        else
+        {
+            //clicking sound 
+        }
+       
     }
+
+
+
 
 }
 

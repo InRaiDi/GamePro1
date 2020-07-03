@@ -29,7 +29,7 @@ public class bullet : MonoBehaviour
     }
     private void Update()
     {
-        Destroy(gameObject, 2.0f);
+        Destroy(gameObject, 1.0f);
     }
 
 }
