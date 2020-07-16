@@ -65,7 +65,9 @@ public class Attack : MonoBehaviour
             {
                 Enemy enemies = enemy.GetComponent<Enemy>();
                 enemies.TakeDamage(attackForce);
+                enemies.isDamaged = true;
             }
+
         }
     }
     void Knife()
