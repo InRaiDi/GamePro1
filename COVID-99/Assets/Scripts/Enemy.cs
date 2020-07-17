@@ -22,29 +22,17 @@ public class Enemy : MonoBehaviour
         GameObject Effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
         Destroy(Effect, 0.6f);
         if (health <= 0)
-        {           
+        {
             Die();
         }
 
-        
+
         void Die()
         {
             Instantiate(bloodDrop, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-        
-    }
 
-    void Update()
-    {
-        if (isDamaged == false)
-        {
-            Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(transform.position, attackRange, playerLayers);
-            foreach (Collider2D players in hitPlayer)
-            {
-                Player player = players.GetComponent<Player>();
-                player.TakeDamage(attackForce);
-            }
-        }
     }
 }
+
