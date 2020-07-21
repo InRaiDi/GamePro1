@@ -11762,6 +11762,8 @@ MonoBehaviour:
   attackForce: 5
   PunchSound: {fileID: 8300000, guid: 034d1e5875125fd4b93ac72721ee61f2, type: 3}
   KnifeSound: {fileID: 8300000, guid: 0c76c49dad66a184283401a5cd9ef2e7, type: 3}
+  ShotSound: {fileID: 8300000, guid: 09f98d5fe4646cf47bf86a887a9b7f5e, type: 3}
+  EmptyGunSound: {fileID: 8300000, guid: 50ce32647655ff548a7493a443e974dd, type: 3}
 --- !u!114 &876220545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11777,6 +11779,7 @@ MonoBehaviour:
   bloodSamples: 0
   gunSelect: 0
   animator: {fileID: 876220542}
+  InventorySound: {fileID: 8300000, guid: 7370ece56cb2cb6429d2fc59d327d978, type: 3}
   pistolEquipped: 0
 --- !u!114 &876220546
 MonoBehaviour:

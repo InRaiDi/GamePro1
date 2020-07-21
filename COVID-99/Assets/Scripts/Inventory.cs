@@ -8,15 +8,23 @@ public class Inventory : MonoBehaviour
 
     public int gunSelect;
     public Animator animator;
+    private AudioSource audioSource;
+    public AudioClip InventorySound;
 
     public bool pistolEquipped;
 
-    
+    void Start()
+    {
+
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public bool PickUpItem(GameObject obj)
     {
-        
-            switch (obj.tag)
+        audioSource.clip = InventorySound;
+        audioSource.Play();
+
+        switch (obj.tag)
             {
              case "Currency":
 

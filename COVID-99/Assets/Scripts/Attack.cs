@@ -21,6 +21,8 @@ public class Attack : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip PunchSound;
     public AudioClip KnifeSound;
+    public AudioClip ShotSound;
+    public AudioClip EmptyGunSound;
 
     // Update is called once per frame
 
@@ -102,14 +104,17 @@ public class Attack : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, attackPoint.position, attackPoint.rotation);
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             rb.AddForce(attackPoint.right * attackForce, ForceMode2D.Impulse);
-            //shooting sound
+            audioSource.clip = ShotSound;
+            audioSource.Play();
 
         }
         else
         {
-            //clicking sound 
+            audioSource.clip = EmptyGunSound;
+            audioSource.Play();
+
         }
-       
+
     }
 
 
