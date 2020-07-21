@@ -15,8 +15,13 @@ public class Player : MonoBehaviour
     public LayerMask enemiesLayers;
     public Transform attackPoint;
     public GameObject deathAnimation;
+    private AudioSource audioSource;
+    public AudioClip DamageTakensSound;
+    void Start()
+    {
 
-
+        audioSource = GetComponent<AudioSource>();
+    }
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Enemy"))
@@ -31,6 +36,9 @@ public class Player : MonoBehaviour
     }
     void TakeDamage(int damage)
     {
+        audioSource.clip = DamageTakensSound;
+        audioSource.Play();
+
         GameObject Effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
         Destroy(Effect, 0.5f);
         playerHealth -= damage;

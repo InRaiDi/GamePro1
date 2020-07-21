@@ -14,9 +14,18 @@ public class Enemy : MonoBehaviour
 
     private int attackForce = 1;
     public bool isDamaged = false;
+    private AudioSource audioSource;
+    public AudioClip EnemyDamageDeathSound;
 
+    void Start()
+    {
+
+        audioSource = GetComponent<AudioSource>();
+    }
     public void TakeDamage(int damage)
     {
+        audioSource.clip = EnemyDamageDeathSound;
+        audioSource.Play();
         health -= damage;
 
         GameObject Effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
@@ -29,6 +38,8 @@ public class Enemy : MonoBehaviour
 
         void Die()
         {
+            audioSource.clip = EnemyDamageDeathSound;
+            audioSource.Play();
             Instantiate(bloodDrop, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
