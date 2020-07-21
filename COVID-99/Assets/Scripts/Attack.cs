@@ -16,11 +16,18 @@ public class Attack : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
 
-
-
     public int attackForce = 5;
 
+    private AudioSource audioSource;
+    public AudioClip PunchSound;
+    public AudioClip KnifeSound;
+
     // Update is called once per frame
+
+    void Start() {
+
+      audioSource = GetComponent<AudioSource>();
+    }
     void Update()
     {
        
@@ -72,12 +79,18 @@ public class Attack : MonoBehaviour
     }
     void Knife()
     {
+       
         animator.SetTrigger("KnifeAttack");
+        audioSource.clip = KnifeSound;
+        audioSource.Play();
 
     }
     void Punch()
     {
+       
         animator.SetTrigger("Attack");
+        audioSource.clip = PunchSound;
+        audioSource.Play();
     }
 
     void FireArmAttack()
