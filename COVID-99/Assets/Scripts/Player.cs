@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
@@ -9,6 +10,9 @@ public class Player : MonoBehaviour
     public float attackRange = 1.0f;
     public int playerHealth = 100;
     //public int attackForce = 10;
+
+    public Text healthText;
+    
 
     public GameObject hitEffect;
     public GameObject dieEffect;
@@ -64,6 +68,8 @@ public class Player : MonoBehaviour
             gameObject.GetComponent<PlayerMovement>().enabled = false;
             Die();
         }
+        healthText.text = playerHealth.ToString();
+       
     }
 
     void Die()
