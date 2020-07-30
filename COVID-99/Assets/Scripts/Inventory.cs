@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class Inventory : MonoBehaviour
     public AudioClip InventorySound;
 
     public bool pistolEquipped;
+
+    public Text bloodSamplesText;
+    public Text ammoText;
 
     void Start()
     {
@@ -29,11 +33,13 @@ public class Inventory : MonoBehaviour
              case "Currency":
 
                  bloodSamples=+1;
+                 bloodSamplesText.text = bloodSamples.ToString();
                  return true;
 
             case "Ammo":
 
-                GetComponent<Attack>().numberBullets +=15;
+                GetComponent<Attack>().numberBullets +=7;
+                ammoText.text = GetComponent<Attack>().numberBullets.ToString();
                 return true;
 
             case "Pistol":

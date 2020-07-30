@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
             Collider2D[] enemiesHittig = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemiesLayers);
             foreach (Collider2D enemy in enemiesHittig)
             {
-                TakeDamage(10);
+                TakeDamage(Random.Range(5, 10));
             }
         }
         if (collision.collider.CompareTag("Enemy2"))
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
             Collider2D[] enemiesHittig = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemiesLayers);
             foreach (Collider2D enemy in enemiesHittig)
             {
-                TakeDamage(20);
+                TakeDamage(Random.Range(10, 20));
             }
         }
         if (collision.collider.CompareTag("Enemy3"))
@@ -49,7 +49,15 @@ public class Player : MonoBehaviour
             Collider2D[] enemiesHittig = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemiesLayers);
             foreach (Collider2D enemy in enemiesHittig)
             {
-                TakeDamage(30);
+                TakeDamage(Random.Range(20, 30));
+            }
+        }
+        if (collision.collider.CompareTag("EnemyBoss"))
+        {
+            Collider2D[] enemiesHittig = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemiesLayers);
+            foreach (Collider2D enemy in enemiesHittig)
+            {
+                TakeDamage(Random.Range(40, 70));
             }
         }
 

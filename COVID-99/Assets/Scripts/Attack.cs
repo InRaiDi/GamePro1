@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Attack : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class Attack : MonoBehaviour
     public AudioClip KnifeSound;
     public AudioClip ShotSound;
     public AudioClip EmptyGunSound;
+
+    public Text ammoText;
 
     // Update is called once per frame
 
@@ -113,6 +116,7 @@ public class Attack : MonoBehaviour
             audioSource.Play();
 
         }
+        ammoText.text = GetComponent<Attack>().numberBullets.ToString();
 
     }
 
