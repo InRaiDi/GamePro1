@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     public float attackRange = 1.0f;
     public int playerHealth = 100;
-    public int attackForce = 10;
+    //public int attackForce = 10;
 
     public GameObject hitEffect;
     public GameObject dieEffect;
@@ -29,7 +29,23 @@ public class Player : MonoBehaviour
             Collider2D[] enemiesHittig = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemiesLayers);
             foreach (Collider2D enemy in enemiesHittig)
             {
-                TakeDamage(attackForce);
+                TakeDamage(10);
+            }
+        }
+        if (collision.collider.CompareTag("Enemy2"))
+        {
+            Collider2D[] enemiesHittig = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemiesLayers);
+            foreach (Collider2D enemy in enemiesHittig)
+            {
+                TakeDamage(20);
+            }
+        }
+        if (collision.collider.CompareTag("Enemy3"))
+        {
+            Collider2D[] enemiesHittig = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemiesLayers);
+            foreach (Collider2D enemy in enemiesHittig)
+            {
+                TakeDamage(30);
             }
         }
 

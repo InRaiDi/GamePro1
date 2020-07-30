@@ -9,6 +9,8 @@ TagManager:
   - Ammo
   - Pistol
   - Wall
+  - Enemy2
+  - Enemy3
   layers:
   - Default
   - TransparentFX

@@ -12,8 +12,6 @@ public class Enemy : MonoBehaviour
     public LayerMask playerLayers;
 
 
-    private int attackForce = 1;
-    public bool isDamaged = false;
     private AudioSource audioSource;
     public AudioClip EnemyDamageDeathSound;
 

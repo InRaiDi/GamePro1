@@ -57,7 +57,7 @@ public class Attack : MonoBehaviour
             if (knifeEquipped)
             {
                 animator.SetBool("KnifeEquipped", true);
-                attackForce = Random.Range(30, 40);
+                attackForce = Random.Range(40, 70);
                 Knife();
 
             }
@@ -65,7 +65,7 @@ public class Attack : MonoBehaviour
             else
             {
                 animator.SetBool("KnifeEquipped", false);
-                attackForce = Random.Range(15, 30); ;
+                attackForce = Random.Range(20, 35); ;
                 Punch();
             }
 
@@ -74,7 +74,6 @@ public class Attack : MonoBehaviour
             {
                 Enemy enemies = enemy.GetComponent<Enemy>();
                 enemies.TakeDamage(attackForce);
-                enemies.isDamaged = true;
             }
 
         }
