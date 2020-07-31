@@ -12,8 +12,6 @@ public class Inventory : MonoBehaviour
     private AudioSource audioSource;
     public AudioClip InventorySound;
 
-    public bool pistolEquipped;
-
     public Text bloodSamplesText;
     public Text ammoText;
 
@@ -32,19 +30,20 @@ public class Inventory : MonoBehaviour
             {
              case "Currency":
 
-                 bloodSamples=+1;
+                 bloodSamples++;
                  bloodSamplesText.text = bloodSamples.ToString();
                  return true;
 
             case "Ammo":
 
-                GetComponent<Attack>().numberBullets +=7;
+                GetComponent<Attack>().numberBullets +=15;
                 ammoText.text = GetComponent<Attack>().numberBullets.ToString();
                 return true;
 
             case "Pistol":
                 animator.SetBool("HandGunEquipped", true);
-                GetComponent<Attack>().fireArmEquipped = true;
+                GetComponent<Attack>().hasGun= true;
+                GetComponent<Attack>().fireArmEquipped= true;
                 return true;
 
             default:

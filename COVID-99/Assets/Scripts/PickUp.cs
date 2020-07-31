@@ -15,7 +15,7 @@ public class PickUp : MonoBehaviour
         {
 
             bool pickedUp = inventory.PickUpItem(gameObject);
-            inventory.PickUpItem(gameObject);
+            //inventory.PickUpItem(gameObject);
             if (pickedUp)
             {
                 RemoveItem();
@@ -28,8 +28,6 @@ public class PickUp : MonoBehaviour
 
     void RemoveItem()
     {
-        //make pickup sound
-        //pick up animation
         Destroy(gameObject);
     }
 
