@@ -12,7 +12,9 @@ public class Player : MonoBehaviour
     //public int attackForce = 10;
 
     public Text healthText;
-    
+
+    public GameObject Gate;
+    public GameObject doc;
 
     public GameObject hitEffect;
     public GameObject dieEffect;
@@ -60,6 +62,13 @@ public class Player : MonoBehaviour
                 TakeDamage(Random.Range(40, 70));
             }
         }
+        if (doc.GetComponent<NextLevel>().DocHitPlayer && Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("pressed E");
+            OpenGate();
+            
+        }
+
 
     }
     void TakeDamage(int damage)
@@ -77,7 +86,7 @@ public class Player : MonoBehaviour
             Die();
         }
         healthText.text = playerHealth.ToString();
-       
+
     }
 
     void Die()
@@ -85,5 +94,15 @@ public class Player : MonoBehaviour
         Destroy(gameObject, 3f);
         SceneManager.LoadScene("GameOver");
 
+    }
+
+
+    void OpenGate()
+    {
+        if (gameObject.GetComponent<Inventory>().bloodSamples >= 5)
+        {
+            gameObject.GetComponent<Inventory>().bloodSamples -= 5; 
+            Destroy(Gate, 0f);
+        }
     }
 }
