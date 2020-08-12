@@ -1,17 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using Color = UnityEngine.Color;
 
 public class Player : MonoBehaviour
 {
     public float attackRange = 1.0f;
-    public int playerHealth = 100;
+    public float playerHealth = 100f;
+   
     //public int attackForce = 10;
 
     public Text healthText;
+    public Text vaccinesText;
 
     public GameObject Gate;
     public GameObject doc;
@@ -23,10 +28,60 @@ public class Player : MonoBehaviour
     public GameObject deathAnimation;
     private AudioSource audioSource;
     public AudioClip DamageTakensSound;
+
+    [Range(1, 10)]
+    public int damagePerSecond = 1;
+
     void Start()
     {
 
         audioSource = GetComponent<AudioSource>();
+    }
+
+    void Update()
+    {
+
+        playerHealth -= damagePerSecond * Time.deltaTime;
+
+        healthText.text = (int)playerHealth + "";
+        if (playerHealth < 25)
+        {
+
+            //change text color, make bigger, different color
+            //accelerate music -- semthing to let the player know that they are about to die if they dont do something about it. (haha)
+
+            if (playerHealth < 1)
+            {
+                Die();
+            }
+
+        }
+
+
+        if (GetComponent<Inventory>().bloodSamples > 0 && Input.GetKeyDown(KeyCode.R)) //Press R to recoop health
+        {
+            playerHealth = 100;
+            GetComponent<Inventory>().bloodSamples--;
+
+            vaccinesText.text = GetComponent<Inventory>().bloodSamples.ToString();
+
+
+            //make healing sound
+        }
+        else
+        {
+            //display message of empty slot -- something
+            //make empty sound
+        }
+
+        //if (doc.GetComponent<NextLevel>().DocHitPlayer && Input.GetKeyDown(KeyCode.E))
+        //{
+        //    Debug.Log("enter");
+        //    OpenGate();
+        //    //make some sound
+        //}
+
+
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -62,12 +117,8 @@ public class Player : MonoBehaviour
                 TakeDamage(Random.Range(40, 70));
             }
         }
-        if (doc.GetComponent<NextLevel>().DocHitPlayer && Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("pressed E");
-            OpenGate();
-            
-        }
+
+        
 
 
     }
@@ -81,28 +132,35 @@ public class Player : MonoBehaviour
         playerHealth -= damage;
         if (playerHealth <= 0)
         {
-            GameObject EffectDeath = Instantiate(dieEffect, transform.position, Quaternion.identity);
-            gameObject.GetComponent<PlayerMovement>().enabled = false;
             Die();
         }
-        healthText.text = playerHealth.ToString();
+
 
     }
 
     void Die()
     {
-        Destroy(gameObject, 3f);
+        //deathsound
+
+        GameObject EffectDeath = Instantiate(dieEffect, transform.position, Quaternion.identity);
+        gameObject.GetComponent<PlayerMovement>().enabled = false;
+        Destroy(gameObject, 2f);
         SceneManager.LoadScene("GameOver");
 
     }
 
 
-    void OpenGate()
-    {
-        if (gameObject.GetComponent<Inventory>().bloodSamples >= 5)
-        {
-            gameObject.GetComponent<Inventory>().bloodSamples -= 5; 
-            Destroy(Gate, 0f);
-        }
-    }
+    //void OpenGate()
+    //{
+    //    if (gameObject.GetComponent<Inventory>().bloodSamples >= 3)
+    //    {
+    //        gameObject.GetComponent<Inventory>().bloodSamples -= 3;
+    //        Destroy(Gate, 0f);
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning("Not Enough vaccines to heal the doctor");
+    //    }
+    //}
+
 }

@@ -36,7 +36,7 @@ public class Inventory : MonoBehaviour
 
             case "Ammo":
 
-                GetComponent<Attack>().numberBullets +=15;
+                GetComponent<Attack>().numberBullets +=7;
                 ammoText.text = GetComponent<Attack>().numberBullets.ToString();
                 return true;
 

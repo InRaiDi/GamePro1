@@ -17,7 +17,7 @@ public class Attack : MonoBehaviour
     public Transform attackPoint;
     public GameObject bulletPrefab;
 
-    public float attackRange = 0.5f;
+    public float attackRange = 2f;
     public LayerMask enemyLayers;
 
     public int attackForce = 5;
@@ -54,7 +54,7 @@ public class Attack : MonoBehaviour
             animator.SetBool("HandGunEquipped", true);
         }
 
-            if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
 
 
@@ -70,50 +70,52 @@ public class Attack : MonoBehaviour
             }
         }
 
+        ammoText.text = GetComponent<Attack>().numberBullets.ToString();
 
-        void MeleeAttack()
+    }
+    void MeleeAttack()
+    {
+
+        attackForce = Random.Range(30, 60);
+        animator.SetTrigger("KnifeAttack");
+        audioSource.clip = KnifeSound;
+        audioSource.Play();
+
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        foreach (Collider2D enemy in hitEnemies)
         {
-
-            attackForce = Random.Range(30, 60);
-            animator.SetTrigger("KnifeAttack");
-            audioSource.clip = KnifeSound;
-            audioSource.Play();
-
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-            foreach (Collider2D enemy in hitEnemies)
-            {
-                Enemy enemies = enemy.GetComponent<Enemy>();
-                enemies.TakeDamage(attackForce);
-            }
-
-        }
-
-
-        void FireArmAttack()
-        {
-            if (numberBullets > 0)
-            {
-                animator.SetTrigger("Shoot");
-                numberBullets--;
-               
-                GameObject bullet = Instantiate(bulletPrefab, attackPoint.position, attackPoint.rotation);
-                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-                rb.AddForce(attackPoint.right * attackForce, ForceMode2D.Impulse);
-                audioSource.clip = ShotSound;
-                audioSource.Play();
-
-            }
-            else
-            {
-                audioSource.clip = EmptyGunSound;
-                audioSource.Play();
-
-            }
-
-            ammoText.text = GetComponent<Attack>().numberBullets.ToString();
-
+            Enemy enemies = enemy.GetComponent<Enemy>();
+            enemies.TakeDamage(attackForce);
         }
 
     }
+
+
+    void FireArmAttack()
+    {
+        if (numberBullets > 0)
+        {
+            animator.SetTrigger("Shoot");
+            numberBullets--;
+
+            GameObject bullet = Instantiate(bulletPrefab, attackPoint.position, attackPoint.rotation);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            rb.AddForce(attackPoint.right * attackForce, ForceMode2D.Impulse);
+            audioSource.clip = ShotSound;
+            audioSource.Play();
+
+        }
+        else
+        {
+            audioSource.clip = EmptyGunSound;
+            audioSource.Play();
+
+        }
+
+        
+
+    }
+
 }
+
 
