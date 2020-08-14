@@ -1,6 +1,9 @@
 # Triontine - “COVID-99”
+Link to a hosted playable final build (open to play in full screen) - http://inraidi.com/Covid99/.<br>
+In order to start with instruction page visit link http://inraidi.com/Covid99-Instructions<br>
+
 <b>Game Overview</b><br> 
-Main character - Professional virologist Will. He got access to the laboratory where a new virus COVID-99 was developed. The objective is to eliminate the virus by attacking it with the vaccine. In order to do it Will must kill 3 infected scientists inside the laboratory and collect all 5 shots of vaccines.
+Main character - Professional virologist Will. He got access to the laboratory where a new virus COVID-99 was developed. The objective is to eliminate the virus by attacking it with the vaccine. In order to do it Will must kill 3 infected scientists inside the laboratory and collect all shots of vaccines.
 <br><br>
 
 <b>Game World</b><br>
@@ -12,7 +15,7 @@ Level 2 – Name to be decided: easy enemy + medium enemy<br>
 Level 3 - Mutation Completed. : easy enemy + medium enemy + difficult enemy (Final boss after killing all others)<br>
 <br>
 <b>Game Progression</b><br>
-Vaccine needle appears after the scientist is killed. All 3 vaccines need to be collected to defeat the final boss and complete the game.<br><br>
+Vaccine needle appears after the scientist is killed. All vaccines need to be collected to defeat the final boss and complete the game.<br><br>
 
 <b>Controls:</b> the game is played by using a keyboard and mouse<Br>
   <ul>
@@ -25,7 +28,7 @@ Vaccine needle appears after the scientist is killed. All 3 vaccines need to be 
   </ul>
   
 <b>Scoring</b><br>
-Collect all 5 Vaccines by killing enemies in order to get access to the final boss. To complete the level you need to save the doctor using 5 vaccine shots.
+Collect all Vaccines by killing enemies in order to get access to the final boss. To complete the level you need to save the doctor using 3 vaccine shots.
 
 
 
