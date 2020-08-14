@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
-using UnityEditor.Experimental.GraphView;
+//using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
     void Update()
     {
 
-        playerHealth -= damagePerSecond * Time.deltaTime;
+        //playerHealth -= damagePerSecond * Time.deltaTime;
 
         healthText.text = (int)playerHealth + "";
         if (playerHealth < 25)

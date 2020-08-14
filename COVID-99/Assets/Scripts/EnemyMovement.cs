@@ -50,8 +50,10 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
 
-        if(Vector2.Distance(transform.position,playerPos.position) < followingDistance)
+
+        if (Vector2.Distance(transform.position,playerPos.position) < followingDistance)
         {
+            
             transform.position = Vector2.MoveTowards(transform.position, playerPos.position, speed * Time.deltaTime);
         }
 

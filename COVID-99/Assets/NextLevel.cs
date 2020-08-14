@@ -51,6 +51,7 @@ public class NextLevel : MonoBehaviour
     {
         inventoryObject.GetComponent<Inventory>().bloodSamples -= 3;
         Destroy(gate, 0f);
+        inventoryObject.GetComponent<Inventory>().bloodSamplesText.text = inventoryObject.GetComponent<Inventory>().bloodSamples.ToString();
 
     }
 }

@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class MenuController : MonoBehaviour
 {
+
+    
+
     public void StartGame()
     {
         // Load the first level
@@ -12,6 +17,15 @@ public class MenuController : MonoBehaviour
         // SceneManager.LoadScene("Level1");
         // The better way
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("Level1");
+    }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     // Quit game

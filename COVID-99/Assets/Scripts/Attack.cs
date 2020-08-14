@@ -76,7 +76,7 @@ public class Attack : MonoBehaviour
     void MeleeAttack()
     {
 
-        attackForce = Random.Range(30, 60);
+        attackForce = Random.Range(20, 50);
         animator.SetTrigger("KnifeAttack");
         audioSource.clip = KnifeSound;
         audioSource.Play();

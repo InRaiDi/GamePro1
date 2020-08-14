@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -40,6 +41,11 @@ public class Enemy : MonoBehaviour
             audioSource.Play();
             Instantiate(bloodDrop, transform.position, Quaternion.identity);
             Destroy(gameObject);
+
+            if(gameObject == GameObject.FindGameObjectWithTag("EnemyBoss"))
+            {
+                SceneManager.LoadScene("Menu");
+            }
         }
 
     }
