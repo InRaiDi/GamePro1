@@ -1,6 +1,7 @@
 # Triontine - “COVID-99”
 Link to a hosted playable final build (open to play in full screen) - http://inraidi.com/Covid99/.<br>
 In order to start with instruction page visit link http://inraidi.com/Covid99-Instructions<br>
+If you successfully defeated the boss, the game goes to the main menu. If you lost, it's game over for you.<br>
 
 <b>Game Overview</b><br> 
 Main character - Professional virologist Will. He got access to the laboratory where a new virus COVID-99 was developed. The objective is to eliminate the virus by attacking it with the vaccine. In order to do it Will must kill 3 infected scientists inside the laboratory and collect all shots of vaccines.
